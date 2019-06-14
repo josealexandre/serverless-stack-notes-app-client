@@ -121,6 +121,7 @@ export default class Notes extends Component {
 
         try {
             await this.deleteNote()
+            await Storage.vault.remove(this.state.note.attachment)
             this.props.history.push('/')
         } catch (e) {
             alert(e)
