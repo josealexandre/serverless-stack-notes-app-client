@@ -85,10 +85,8 @@ export default class Notes extends Component {
 
         try {
             if (this.file) {
-                const teste = await Storage.vault.remove(
-                    this.state.note.attachment
-                )
-                console.log(teste)
+                await Storage.vault.remove(this.state.note.attachment)
+
                 attachment = await s3Upload(this.file)
             }
 
@@ -104,6 +102,10 @@ export default class Notes extends Component {
         }
     }
 
+    deleteNote() {
+        return API.del('notes', `/notes/${this.props.match.params.id}`)
+    }
+
     handleDelete = async event => {
         event.preventDefault()
 
@@ -116,6 +118,14 @@ export default class Notes extends Component {
         }
 
         this.setState({ isDeleting: true })
+
+        try {
+            await this.deleteNote()
+            this.props.history.push('/')
+        } catch (e) {
+            alert(e)
+            this.setState({ isDeleting: false })
+        }
     }
 
     render() {
