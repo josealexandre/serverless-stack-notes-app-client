@@ -85,6 +85,10 @@ export default class Notes extends Component {
 
         try {
             if (this.file) {
+                const teste = await Storage.vault.remove(
+                    this.state.note.attachment
+                )
+                console.log(teste)
                 attachment = await s3Upload(this.file)
             }
 
