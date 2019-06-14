@@ -2,7 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 
 import AppliedRoute from './components/AppliedRoute'
-import  from './components/AuthenticatedRoute'
+import AuthenticatedRoute from './components/AuthenticatedRoute'
 import UnauthenticatedRoute from './components/UnauthenticatedRoute'
 import Home from './containers/Home'
 import Login from './containers/Login'
