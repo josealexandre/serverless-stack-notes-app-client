@@ -15,6 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "predeploy": "yarn build",
+    "deploy": "aws s3 sync build/ s3://alexandre-notes-app-client --delete",
+    "postdeploy": "aws cloudfront create-invalidation --distribution-id EI4IQK8K2ZTCG --paths /*",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
